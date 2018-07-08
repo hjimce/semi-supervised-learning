@@ -117,13 +117,13 @@ for epoch in range(10000):
         classify_loss=classify_loss_function(predict_student,y)/min_batch_size
         sum_loss = classify_loss
 
-        '''x_teacher= autograd.Variable(x[1],volatile=True).cuda()
+        x_teacher= autograd.Variable(x[1],volatile=True).cuda()
         predict_teacher = net_teacher(x_teacher)
         ema_logit = autograd.Variable(predict_teacher.detach().data, requires_grad=False)
         consistency_loss =softmax_mse_loss(predict_student,ema_logit)/min_batch_size
         consistency_weight=1
         sum_loss+=consistency_weight*consistency_loss
-        globals_consistency_loss += consistency_loss.data[0]'''
+        globals_consistency_loss += consistency_loss.data[0]
 
         sum_loss.backward()
         optimizer.step()
